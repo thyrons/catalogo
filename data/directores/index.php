@@ -46,16 +46,14 @@ include('../menu/app.php');
               <div class="box box-primary">
                 <div class="box-body">
                   <div class="row">
-                      <form id="clientes_form" name="clientes_form" method="post">
+                      <form id="directores_form" name="directores_form" method="post">
                         <div class="col-mx-12">                    
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>RUC/CI: <font color="red">*</font></label>
                               <input type="text" name="ruc_ci"  id="ruc_ci" class="form-control" />
-                              <input type="text" name="id_director"  id="id_director" class="form-control" />
+                              <input type="hidden" name="id_director"  id="id_director" class="form-control" />
                             </div>  
-
-                            
 
                             <div class="form-group">
                               <label>Teléfono:</label>

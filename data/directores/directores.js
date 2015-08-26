@@ -74,9 +74,10 @@ function guardar_directores() {
                         $("#direccion_cli").focus();
                         alertify.error("Ingrese una dirección");
                     }else{
+                        $("#btnGuardar").attr("disabled", true);
                         $.ajax({
                             type: "POST",
-                            url: "../procesos/guardar_directores.php",
+                            url: "guardar_directores.php",
                             data:"ruc_ci=" + $("#ruc_ci").val() +
                             "&nombres_cli=" + $("#nombres_cli").val() + "&direccion_cli=" + $("#direccion_cli").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&pais_cli=" + $("#pais_cli").val() + "&ciudad_cli=" + $("#ciudad_cli").val() + "&email=" + $("#email").val()+ "&clave2=" + $("#clave2").val(),
                             success: function(data) {
@@ -122,9 +123,10 @@ function modificar_directores() {
                             $("#direccion_cli").focus();
                             alertify.error("Ingrese una dirección");
                         }else{
+                            $("#btnModificar").attr("disabled", true);
                             $.ajax({
                                 type: "POST",
-                                url: "../procesos/modificar_directores.php",
+                                url: "modificar_directores.php",
                                 data: "ruc_ci=" + $("#ruc_ci").val() + "&id_director=" + $("#id_director").val() +
                                 "&nombres_cli=" + $("#nombres_cli").val() + "&direccion_cli=" + $("#direccion_cli").val() + "&nro_telefono=" + $("#nro_telefono").val() + "&nro_celular=" + $("#nro_celular").val() + "&pais_cli=" + $("#pais_cli").val() + "&ciudad_cli=" + $("#ciudad_cli").val() + "&email=" + $("#email").val()+ "&clave2=" + $("#clave2").val(),
                                 success: function(data) {
@@ -181,7 +183,7 @@ function validar_acceso(){
 function aceptar(){
     $.ajax({
         type: "POST",
-        url: "../procesos/eliminar_directores.php",
+        url: "eliminar_directores.php",
         data: "id_director=" + $("#id_director").val(),
         success: function(data) {
             var val = data;
@@ -244,7 +246,7 @@ function inicio() {
         alertify.set({ delay: 1000 });
         $.ajax({
             type: "POST",
-            url: "../procesos/comparar_cedulas3.php",
+            url: "comparar_cedulas.php",
             data: "cedula=" + $("#ruc_ci").val(),
             success: function(data) {
                 var val = data;
@@ -384,7 +386,7 @@ function inicio() {
 
     /////////////tabla clientes/////////
     jQuery("#list").jqGrid({
-        url: '../xml/datos_directores.php',
+        url: 'datos_directores.php',
         datatype: 'xml',
         colNames: ['Codigo', 'Identificacion', 'Nombres', 'Fijo', 'Movil', 'Pais', 'Ciudad', 'Direccion', 'Correo'],
         colModel: [

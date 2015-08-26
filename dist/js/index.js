@@ -9,10 +9,6 @@ var dialogo =
     modal: true
 };
 
-function este(){
-window.open('../../fpdf/ayuda_general.pdf');
-}
-
 function enter(e) {
     if (e.which === 13 || e.keyCode === 13) {
         ingresarSistema();
@@ -74,12 +70,6 @@ function guardar_empresa(){
     }
 }
 
-function retornar(){
-//     location.href("../");
-     
-     window.location.assign("../");
-} 
-
 function inicio() {
     $("#ruc_empresa").validCampoFranz("0123456789");
     $("#telefono_empresa").validCampoFranz("0123456789");
@@ -92,15 +82,13 @@ function inicio() {
     $("#btnGuardar").click(function(e) {
         e.preventDefault();
     });
-    $("#btnRetornar").click(function(e) {
+    $("#btnCancelar").click(function(e) {
         e.preventDefault();
     });
     
     ////////////eventos botones/////////////
     $("#btnCancelar").on("click", cancelar);
     $("#btnGuardar").on("click", guardar_empresa);
-    $("#btnIngreso").on("click", ingresarSistema);
-    $("#btnRetornar").on("click", retornar);
     //////////////////////////////////////
    
     ////////////dialogo///////////////
@@ -110,7 +98,7 @@ function inicio() {
     $("#txt_usuario").focus();
     $("#txt_contra").on("keypress", enter);
     $("#txt_usuario").on("keypress", enter);
-    
+    $("#btnIngreso").on("click", ingresarSistema);
 }
 
 function ingresarSistema() {
@@ -125,37 +113,19 @@ function ingresarSistema() {
             $.ajax({
                 url: '../procesos/index.php',
                 type: 'POST',
-                data: "usuario=" + $("#txt_usuario").val() + "&clave=" + $("#txt_contra").val() + "&id_empresa=" + $("#empresa").val(),
+                data: "usuario=" + $("#txt_usuario").val() + "&clave=" + $("#txt_contra").val() + "&tipo=" + $("#tipo").val(),
                 success: function(data) {
                     var val = data;
                     if (val == 1) {
-                        if($("#empresa").val() === null){
-                            alertify.confirm("Desea crear una nueva empresa", function (e) {
-                                if (e) {
-                                    $("#crear_empresa").dialog("open"); 
-                                }else{
-                                    $("#txt_usuario").val("");
-                                    $("#txt_contra").val(""); 
-                                }
-                            });
-                        }else{
-                            window.location.href = "principal";
-                        }
+                        window.location.href = "principal";
                     } else {
-                        if (val == 2) {
-                            if($("#empresa").val() === "" || $("#empresa").val() === null){
-                                $("#txt_usuario").val("");
-                                $("#txt_contra").val("");
-                                $("#txt_usuario").focus();
-                                alertify.alert("Imposible acceder al sistema"); 
-                            }else{
-                                window.location.href = "principal";  
-                            }
+                        if (val == 0) {
+                            $("#txt_contra").val("")
+                            $("#txt_contra").focus();
+                            alertify.alert("Error... Los datos son incorrectos ingrese nuevamente");
                         }else{
-                            if (val == 0) {
-                                $("#txt_contra").val("")
-                                $("#txt_contra").focus();
-                                alertify.alert("Error... Los datos son incorrectos ingrese nuevamente");
+                          if (val == 2) {
+                             window.location.href = "directores";
                             }
                         }
                     }

@@ -85,6 +85,16 @@ include('../menu/app.php');
                             </div>
 
                             <div class="form-group">
+                              <label>Cupo de Crédito: </label>
+                              <div class="input-group">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-money"></i>
+                                </div>
+                                <input type="text" name="cupo_credito" id="cupo_credito" placeholder="0.00" value="0" class="form-control"/>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
                               <label>Comentarios:</label>
                               <textarea class="form-control" name="notas_cli" id="notas_cli" rows="3"></textarea>
                             </div>
@@ -94,6 +104,14 @@ include('../menu/app.php');
                             <div class="form-group">
                               <label>RUC/CI: <font color="red">*</font></label>
                               <input type="text" name="ruc_ci"  id="ruc_ci" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Tipo:</label>
+                              <select class="form-control" name="tipo_cli" id="tipo_cli">
+                                <option value="natural" selected>Natural</option>
+                                <option value="juridico">Jurídica</option>     
+                              </select>
                             </div>
 
                             <div class="form-group">
@@ -122,22 +140,10 @@ include('../menu/app.php');
                             </div>
 
                             <div class="form-group">
-                              <label>Cupo de Crédito: <font color="red">*</font></label>
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-money"></i>
-                                </div>
-                                <input type="text" name="cupo_credito" id="cupo_credito" placeholder="0.00" class="form-control"/>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Tipo:</label>
-                              <select class="form-control" name="tipo_cli" id="tipo_cli">
-                                <option value="Persona Natural" selected>Persona Natural</option>
-                                <option value="Persona Jurídica">Persona Jurídica</option>     
-                              </select>
-                            </div>
+                              <label>Director@: <font color="red">*</font></label>
+                              <input type="text" name="directores" id="directores" placeholder="Buscar..." class="form-control" />
+                              <input type="text" name="id_director" id="id_director" class="form-control" />
+                            </div> 
                           </div>
                         </div>
                       </form>

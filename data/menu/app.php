@@ -115,6 +115,7 @@ print'
                 <li><a href="../clientes" target="_blank"><i class="fa fa-circle-o"></i> Clientes</a></li>
                 <li><a href="../proveedores" target="_blank"><i class="fa fa-circle-o"></i> Proveedores</a></li>
                 <li><a href="../productos" target="_blank"><i class="fa fa-circle-o"></i> Productos</a></li>
+                <li><a href="../dias" target="_blank"><i class="fa fa-circle-o"></i> Habilitar Días</a></li>
               </ul>
             </li>
 
