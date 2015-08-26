@@ -125,7 +125,7 @@ print'
               </a>
               <ul class="treeview-menu">
                 <li><a href="../inventario" target="_blank"><i class="fa fa-circle-o"></i>Inventario</a></li>
-                <li><a href="../proformas" target="_blank"><i class="fa fa-circle-o"></i> Proforma</a></li>
+                <!--<li><a href="../proformas" target="_blank"><i class="fa fa-circle-o"></i> Proforma</a></li>-->
                 <li>
                   <a href=""><i class="fa fa-circle-o"></i>Compras<i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">

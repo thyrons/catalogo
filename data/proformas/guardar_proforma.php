@@ -48,6 +48,7 @@ for ($i = 0; $i <= $nelem; $i++) {
     pg_query("insert into detalle_proforma values('$cont2','$cont1','$arreglo1[$i]','$arreglo2[$i]','$arreglo3[$i]','$arreglo4[$i]','$arreglo5[$i]','Activo')");
     ////////////////////////////////
 }
-$data = 1;
+$data = $cont1;
+
 echo $data;
 ?>

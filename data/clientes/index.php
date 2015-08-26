@@ -142,7 +142,7 @@ include('../menu/app.php');
                             <div class="form-group">
                               <label>Director@: <font color="red">*</font></label>
                               <input type="text" name="directores" id="directores" placeholder="Buscar..." class="form-control" />
-                              <input type="text" name="id_director" id="id_director" class="form-control" />
+                              <input type="hidden" name="id_director" id="id_director" class="form-control" />
                             </div> 
                           </div>
                         </div>
