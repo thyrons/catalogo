@@ -111,8 +111,9 @@ print'
               </a>
               <ul class="treeview-menu">
                 <li><a href="../usuarios" target="_blank"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                <li><a href="../proveedores" target="_blank"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="../directores" target="_blank"><i class="fa fa-circle-o"></i> Directores</a></li>
                 <li><a href="../clientes" target="_blank"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="../proveedores" target="_blank"><i class="fa fa-circle-o"></i> Proveedores</a></li>
                 <li><a href="../productos" target="_blank"><i class="fa fa-circle-o"></i> Productos</a></li>
               </ul>
             </li>
