@@ -321,7 +321,7 @@ function entrar3() {
                                         
                                         if (id['cod_producto'] === $("#cod_producto").val()) {
                                             repe = 1;
-				            var can = id['cantidad'];		
+				                            var can = id['cantidad'];		
                                         }
                                     }
                                     if (repe == 1) {
@@ -547,7 +547,7 @@ function entrar3() {
                                         var id = filas[i];
                                         if (id['cod_producto'] === $("#cod_producto").val()) {
                                             repe = 1;
-					    var can = id['cantidad'];
+					                        var can = id['cantidad'];
                                         }
                                     }
 
@@ -1280,12 +1280,14 @@ function guardar_factura() {
                                         var v4 = new Array();
                                         var v5 = new Array();
                                         var v6 = new Array();
+
                                         var string_v1 = "";
                                         var string_v2 = "";
                                         var string_v3 = "";
                                         var string_v4 = "";
                                         var string_v5 = "";
                                         var string_v6 = "";
+
                                         var fil = jQuery("#list").jqGrid("getRowData");
                                         for (var i = 0; i < fil.length; i++) {
                                             var datos = fil[i];
@@ -1320,21 +1322,21 @@ function guardar_factura() {
                                                         //    window.open("../../reportes/factura_venta.php?hoja=A4&id="+val,'_blank');
                                                         //    location.reload();
                                                         //});
-							alertify.alert("Factura Guardada correctamente", function(){
+						                                alertify.alert("Factura Guardada correctamente", function(){
                                                             var myWindow = window.open("../../reportes/factura_venta.php?hoja=A4&id="+val,'_blank');
                                                             myWindow.focus();
                                                             myWindow.print();                                                                      
                                                             location.reload();
                                                         });
                                                     }
-                                                }else{
-                                                    if($("#tipo_venta").val() == "NOTA"){
+                                                } else {
+                                                    if($("#tipo_venta").val() == "NOTA") {
                                                         if (val != 0) {
                                                             //alertify.alert("Factura Guardada correctamente", function(){
                                                             //    window.open("../reportes_sistema/nota_venta.php?hoja=A4&id="+val,'_blank');
                                                             //    location.reload();
                                                             //});
-							    alertify.alert("Nota Venta Guardada correctamente", function(){
+							                                alertify.alert("Nota Venta Guardada correctamente", function(){
                                                                 var myWindow = window.open("../reportes_sistema/nota_venta.php?hoja=A4&id="+val,'_blank');
                                                                 myWindow.focus();
                                                                 myWindow.print();          
@@ -1467,7 +1469,7 @@ function flecha_atras(){
                                 var entero2 = sal.toFixed(2);
                                 $("#cuotas").append('<option>'+entero2+'</option>'); 
 
-                            }else{
+                            } else {
                                 $("#cuotas").attr("disabled", false); 
                                 $("#cuotas").append('<option>'+data[i + 3]+'</option>');  
                             }
