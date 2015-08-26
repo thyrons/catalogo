@@ -267,6 +267,17 @@ print'
                     <li><a href="" id="gastos_internos"><i class="fa fa-circle-o"></i>Gastos Internos Fechas</a></li>
                   </ul>
                 </li>
+
+                <li>
+                  <a href=""><i class="fa fa-circle-o"></i>Directores<i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                    <li><a href="" id="total_director"><i class="fa fa-files-o"></i>Total por Director</a></li>
+                    <li><a href="" id="faltante_pedido"><i class="fa fa-files-o"></i>Faltante de Pedidos</a></li>
+                    <li><a href="" id="reporte_director_agrupado"><i class="fa fa-files-o"></i>Agrupados por Empresario</a></li>
+                    <li><a href="" id="reporte_director_agrupado_factura"><i class="fa fa-files-o"></i>Agrupados por Empresario(facturas)</a></li>
+                    
+                  </ul>
+                </li>
               </ul>
             </li>
 

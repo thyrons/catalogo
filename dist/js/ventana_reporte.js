@@ -103,6 +103,11 @@ function inicio(){
     $("#diario_caja").on("click",diario_caja);
     $("#ordenes_produccion_fechas").on("click",ordenes_produccion_fechas);
     $("#total_director").on("click",total_director);
+
+    $("#faltante_pedido").on("click",faltante_pedido);
+    $("#notas_de_venta").on("click",notas_de_venta);
+    $("#reporte_director_agrupado").on("click",reporte_director_agrupado);
+    $("#reporte_director_agrupado_factura").on("click",reporte_director_agrupado_factura);
     
 }
 function Defecto(e){
@@ -1582,5 +1587,203 @@ function total_director(e){
 
 function fn_total_director(e){
     window.open('../../reportes/reporte_director.php?id='+$("#idDir").val()+"&inicio="+$("#inicio").val()+"&fin="+$("#fin").val(), '_blank');      
+       
+}
+////////////////////////////
+function faltante_pedido(e){ 
+    modal.open({
+        content: "<label style='padding:6px;'>Fecha Inicio</label> <input type='text' id='inicio' style='padding:2px;'><br> <label style='padding:6px;'>Fecha Fin</label> <input type='text' id='fin' style='float: right;padding:2px;'><br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_faltantePedido' onclick='return fn_faltante_pedido(event)' href='#'>Generar Reporte</a>"
+    });    
+    $('.generarReporte_faltantePedido').button();   
+    $( "#inicio" ).datepicker({
+     
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#fin" ).datepicker({
+    
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+    e.preventDefault();  
+}
+
+function fn_faltante_pedido(e){
+    window.open('../../reportes/faltante_pedidos.php?&inicio='+$("#inicio").val()+"&fin="+$("#fin").val(), '_blank');      
+       
+}
+/////////////////////
+function notas_de_venta(e){ 
+    modal.open({
+        content: "<label for='buscarCli' style='padding:6px;'>Buscar </label><input type='text' name='buscarCli' id='buscarCli' style='float: right;padding:2px;' /><input type='hidden' id='idCli' /><br><label style='padding:6px;'>Facturas</label> <select id='select_notas_ventas' style='padding:2px;'><option>Busque un cliente</option></select><br> <input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_notas_de_venta' onclick='return fn_notas_de_venta(event)' href='#'>Generar Reporte</a>"
+    });
+    $("#buscarCli").autocomplete({
+        source: "../../procesos/busquedaCliente.php",
+        minLength: 1,
+        focus: function(event, ui) {
+        $("#buscarCli").val(ui.item.value);            
+        $("#idCli").val(ui.item.label);
+        return false;
+        },
+        select: function(event, ui) {
+        $("#buscarCli").val(ui.item.value);            
+        $("#idCli").val(ui.item.label);
+        cargar_notas_ventas(ui.item.label);
+        return false;
+        }
+        }).data("ui-autocomplete")._renderItem = function(ul, item) {
+        return $("<li>")
+        .append("<a>" + item.value + "</a>")
+        .appendTo(ul);
+    };
+    $('.generarReporte_notas_de_venta').button();       
+    e.preventDefault();  
+}
+
+function fn_notas_de_venta(e){    
+    if($("#select_notas_ventas").val() != ''){
+        window.open('../../reportes/nota_venta.php?id='+$("#select_notas_ventas").val(), '_blank');          
+    }else{
+        alert("Seleccione una factura antes de continuar");
+    }
+    
+       
+}
+function cargar_notas_ventas(id){
+    $("#select_notas_ventas").load("../../procesos/cargar_notas_ventas.php?id="+id)
+}
+////////////////
+function reporte_director_agrupado(e){ 
+    modal.open({
+        content: "<label for='buscarDir' style='padding:6px;'>Buscar</label><input type='text' name='buscarDir' id='buscarDir' style='float: right;padding:2px;' /><input type='hidden' id='idDir' /><br><label style='padding:6px;'>Fecha Inicio</label> <input type='text' id='inicio' style='padding:2px;'><br> <label style='padding:6px;'>Fecha Fin</label> <input type='text' id='fin' style='float: right;padding:2px;'><br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_totalDirector' onclick='return fn_reporte_director_agrupado(event)' href='#'>Generar Reporte</a>"
+    });
+    $("#buscarDir").autocomplete({
+        source: "../../procesos/busquedaDirector.php",
+        minLength: 1,
+        focus: function(event, ui) {
+        $("#buscarDir").val(ui.item.label);            
+        $("#idDir").val(ui.item.value);
+        return false;
+        },
+        select: function(event, ui) {
+        $("#buscarDir").val(ui.item.label);            
+        $("#idDir").val(ui.item.value);
+        return false;
+        }
+        }).data("ui-autocomplete")._renderItem = function(ul, item) {
+        return $("<li>")
+        .append("<a>" + item.label + "</a>")
+        .appendTo(ul);
+    };
+    $('.generarReporte_totalDirector').button();   
+    $( "#inicio" ).datepicker({
+     
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#fin" ).datepicker({
+    
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+    e.preventDefault();  
+}
+
+function fn_reporte_director_agrupado(e){
+    window.open('../../reportes/reporte_director_agrupado.php?id='+$("#idDir").val()+"&inicio="+$("#inicio").val()+"&fin="+$("#fin").val(), '_blank');      
+       
+}
+///reporte_director_agrupado_factura
+function reporte_director_agrupado_factura(e){ 
+    modal.open({
+        content: "<label for='buscarDir' style='padding:6px;'>Buscar</label><input type='text' name='buscarDir' id='buscarDir' style='float: right;padding:2px;' /><input type='hidden' id='idDir' /><br><label style='padding:6px;'>Fecha Inicio</label> <input type='text' id='inicio' style='padding:2px;'><br> <label style='padding:6px;'>Fecha Fin</label> <input type='text' id='fin' style='float: right;padding:2px;'><br><input type='radio' name='group1' id='excel' value='Reporte en Excel' > <label for='excel'>Reporte en Excel</label> <br><input type='radio' name='group1' id='pdf' value='Reporte Pdf' checked> <label for='pdf'>Reporte Pdf</label> <br><a 'id='generar' style='cursor:pointer;font-size:12px;margin-left:40px' class='generarReporte_totalDirectorFacturas' onclick='return fn_reporte_director_agrupado_factura(event)' href='#'>Generar Reporte</a>"
+    });
+    $("#buscarDir").autocomplete({
+        source: "../../procesos/busquedaDirector.php",
+        minLength: 1,
+        focus: function(event, ui) {
+        $("#buscarDir").val(ui.item.label);            
+        $("#idDir").val(ui.item.value);
+        return false;
+        },
+        select: function(event, ui) {
+        $("#buscarDir").val(ui.item.label);            
+        $("#idDir").val(ui.item.value);
+        return false;
+        }
+        }).data("ui-autocomplete")._renderItem = function(ul, item) {
+        return $("<li>")
+        .append("<a>" + item.label + "</a>")
+        .appendTo(ul);
+    };
+    $('.generarReporte_totalDirectorFacturas').button();   
+    $( "#inicio" ).datepicker({
+     
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#fin" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#fin" ).datepicker({
+    
+        changeMonth: true,
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,   
+        showButtonPanel: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,   
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#inicio" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+    e.preventDefault();  
+}
+
+function fn_reporte_director_agrupado_factura(e){
+    if($('#excel').is(':checked')){     
+        window.open('../../phpexcel/reporte_director_agrupado_facturas.php?id='+$("#idDir").val()+"&inicio="+$("#inicio").val()+"&fin="+$("#fin").val(), '_blank');         
+    } else{
+        window.open('../../reportes/reporte_director_agrupado_facturas.php?id='+$("#idDir").val()+"&inicio="+$("#inicio").val()+"&fin="+$("#fin").val(), '_blank');              
+    }  
+    
        
 }

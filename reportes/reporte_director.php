@@ -33,7 +33,7 @@
             $this->SetDrawColor(0,0,0);
             $this->SetLineWidth(0.5);
             $this->SetFillColor(120,120,120);
-            $this->Line(1,45,210,45);            
+            $this->Line(1,50,210,50);            
             $this->SetFont('Arial','B',12);                                                                
             $this->Cell(190, 5, utf8_decode("REPORTE DE VENTAS POR DIRECTOR"),0,1, 'C',0);                                                                                                                
             $this->SetFont('Arial','B',10);                                                                            
@@ -63,21 +63,21 @@
         $pdf->SetX(1); 
         $pdf->SetFillColor(187, 179, 180);            
         $pdf->Cell(70, 6, maxCaracter(utf8_decode('RUC/CI:'.$row[1]),35),1,0, 'L',1);                                     
-        $pdf->Cell(135, 6, maxCaracter(utf8_decode('DIRECTOR:'.$row[2]),50),1,1, 'L',1);                                                                     
+        $pdf->Cell(137, 6, maxCaracter(utf8_decode('DIRECTOR:'.$row[2]),50),1,1, 'L',1);                                                                     
     }
     $pdf->SetX(1);        
     $pdf->Cell(40, 6, utf8_decode("CI/RUC"),1,0, 'C',0);
-    $pdf->Cell(35, 6, utf8_decode("Nombres"),1,0, 'C',0);
-    $pdf->Cell(50, 6, utf8_decode("Nro. Facturas"),1,0, 'C',0);        
-    $pdf->Cell(40, 6, utf8_decode("Total Facturas"),1,1, 'C',0);                            
+    $pdf->Cell(97, 6, utf8_decode("Nombres"),1,0, 'C',0);
+    $pdf->Cell(35, 6, utf8_decode("Nro. Facturas"),1,0, 'C',0);        
+    $pdf->Cell(35, 6, utf8_decode("Total Facturas"),1,1, 'C',0);                            
     
-    $sql = pg_query("select id_cliente, identificacion, nombres_cli from clientes where id_director = '$_GET[id]' order by id_cliente asc;");
+    $sql = pg_query("select id_cliente, identificacion, nombres_cli from clientes where id_director = '$_GET[id]' order by id_cliente asc;");    
     $cont1 = 0;
     $cont2 = 0;
     while ($row = pg_fetch_row($sql)) {
         $temp = 0;
         $temp1 = 0;
-        $sql1 = pg_query("select count(id_factura_venta) as contador, SUM(total_venta::float) as total_venta from factura_venta where id_cliente ='$row[0]' and estado ='Activo'");
+        $sql1 = pg_query("select count(id_factura_venta) as contador, SUM(total_venta::float) as total_venta from factura_venta where id_cliente ='$row[0]' and estado ='Activo'");        
         while ($row1 = pg_fetch_row($sql1)) {
             $temp = $row1[0];
             if ($row1[1] == "") {
@@ -90,15 +90,15 @@
         }
         $pdf->SetX(1);        
         $pdf->Cell(40, 6, utf8_decode($row[1]),0,0, 'C',0);                               
-        $pdf->Cell(50, 6, utf8_decode($row[2]),0,0, 'C',0);                       
-        $pdf->Cell(40, 6, utf8_decode($temp),0,0, 'C',0);                       
-        $pdf->Cell(40, 6, utf8_decode($temp1),0,1, 'C',0);                           
+        $pdf->Cell(97, 6, utf8_decode($row[2]),0,0, 'L',0);                       
+        $pdf->Cell(35, 6, utf8_decode($temp),0,0, 'C',0);                       
+        $pdf->Cell(35, 6, utf8_decode($temp1),0,1, 'C',0);                           
     }
     $pdf->SetX(1);                                             
-    $pdf->Cell(207, 0, utf8_decode(""),1,1, 'R',0);
-    $pdf->Cell(85, 6, utf8_decode("Totales"),0,0, 'R',0);
-    $pdf->Cell(25, 6, maxCaracter((number_format($cont1,2,',','.')),20),0,0, 'C',0);                                                    
-    $pdf->Cell(25, 6, maxCaracter((number_format($cont2,2,',','.')),20),0,1, 'C',0);                                                    
+    $pdf->Cell(207, 0, utf8_decode(""),0,1, 'R',0);
+    $pdf->Cell(135, 6, utf8_decode("Totales"),0,0, 'R',0);
+    $pdf->Cell(37, 6, maxCaracter((number_format($cont1,2,',','.')),20),0,0, 'C',0);                                                    
+    $pdf->Cell(37, 6, maxCaracter((number_format($cont2,2,',','.')),20),0,1, 'C',0);                                                    
     $pdf->Ln(3);              
     $pdf->Output();
 ?>
