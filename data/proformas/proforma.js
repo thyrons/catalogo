@@ -141,9 +141,9 @@ function entrar2() {
                     if ($("#p_venta").val() === "") {
                     $("#p_venta").focus();
                     alertify.alert("Ingrese un precio");
-                  }else{
+                    } else {
                     $("#descuento").focus();
-                 }
+                    }
                 }
             }
         }
@@ -531,7 +531,7 @@ function flecha_atras(){
                         }
                     }
                 });
-           }else{
+           } else {
                alertify.alert("No hay mas registros posteriores!!");
            }
        }
@@ -610,10 +610,10 @@ function flecha_siguiente(){
                     }
                 }
             });
-           }else{
+           } else {
                alertify.alert("No hay mas registros superiores!!");
            }    
-       }
+        }
    });
 }
 
@@ -736,8 +736,6 @@ function inicio() {
     });
 
     $("#btnGuardar").on("click", guardar_proforma);
-    // $(document).bind('keydown', 'F7', guardar_proforma);
-    // $('input').unbind('keydown', 'F7', guardar_proforma);
     $("#btnNuevo").on("click", limpiar_proforma);
     $("#btnAtras").on("click", flecha_atras);
     $("#btnAdelante").on("click", flecha_siguiente);
@@ -783,7 +781,7 @@ function inicio() {
                         $("#codigo").val(data[i]);
                         $("#producto").val(data[i + 1]);
                         $("#p_venta").val(data[i + 2]);
-                        $("#descuento").attr("max",data[i + 7]);
+                        $("#descuento").val(data[i + 7]);
                         $("#disponibles").val(data[i + 3]);
                         $("#iva_producto").val(data[i + 4]);
                         $("#carga_series").val(data[i + 5]);
@@ -793,7 +791,7 @@ function inicio() {
                         $("#incluye").val(data[i + 9]);
                         $("#cantidad").focus();
                     }
-                }else{
+                } else {
                     $("#codigo").val("");
                     $("#producto").val("");
                     $("#p_venta").val("");
@@ -807,7 +805,7 @@ function inicio() {
                     $("#incluye").val("");
                 }
             });
-        }else{
+        } else {
             if (precio === "MAYORISTA") {
                 $.getJSON('search.php?codigo_barras=' + codigo + '&precio=' + precio, function(data) {
                     var tama = data.length;
@@ -816,7 +814,7 @@ function inicio() {
                             $("#codigo").val(data[i]);
                             $("#producto").val(data[i + 1]);
                             $("#p_venta").val(data[i + 2]);
-                            $("#descuento").attr("max",data[i + 7]);
+                            $("#descuento").val(data[i + 7]);
                             $("#disponibles").val(data[i + 3]);
                             $("#iva_producto").val(data[i + 4]);
                             $("#carga_series").val(data[i + 5]);
@@ -826,7 +824,7 @@ function inicio() {
                             $("#incluye").val(data[i + 9]);
                             $("#cantidad").focus();
                         }
-                    }else{
+                    } else {
                         $("#codigo").val("");
                         $("#producto").val("");
                         $("#p_venta").val("");
@@ -857,7 +855,7 @@ function inicio() {
                 $("#codigo").val(ui.item.value);
                 $("#producto").val(ui.item.producto);
                 $("#p_venta").val(ui.item.p_venta);
-                $("#descuento").attr("max",ui.item.descuento);
+                $("#descuento").val(ui.item.descuento);
                 $("#des").val(ui.item.des);
                 $("#iva_producto").val(ui.item.iva_producto);
                 $("#cod_producto").val(ui.item.cod_producto);
@@ -869,7 +867,7 @@ function inicio() {
                 $("#codigo").val(ui.item.value);
                 $("#producto").val(ui.item.producto);
                 $("#p_venta").val(ui.item.p_venta);
-                $("#descuento").attr("max",ui.item.descuento);
+                $("#descuento").val(ui.item.descuento);
                 $("#des").val(ui.item.des);
                 $("#iva_producto").val(ui.item.iva_producto);
                 $("#cod_producto").val(ui.item.cod_producto);
@@ -892,7 +890,7 @@ function inicio() {
                     $("#codigo").val(ui.item.value);
                     $("#producto").val(ui.item.producto);
                     $("#p_venta").val(ui.item.p_venta);
-                    $("#descuento").attr("max",ui.item.descuento);
+                    $("#descuento").val(ui.item.descuento);
                     $("#des").val(ui.item.des);
                     $("#iva_producto").val(ui.item.iva_producto);
                     $("#cod_producto").val(ui.item.cod_producto);
@@ -904,7 +902,7 @@ function inicio() {
                     $("#codigo").val(ui.item.value);
                     $("#producto").val(ui.item.producto);
                     $("#p_venta").val(ui.item.p_venta);
-                    $("#descuento").attr("max",ui.item.descuento);
+                    $("#descuento").val(ui.item.descuento);
                     $("#des").val(ui.item.des);
                     $("#iva_producto").val(ui.item.iva_producto);
                     $("#cod_producto").val(ui.item.cod_producto);
@@ -934,7 +932,7 @@ function inicio() {
             $("#producto").val(ui.item.value);
             $("#codigo").val(ui.item.codigo);
             $("#p_venta").val(ui.item.p_venta);
-            $("#descuento").attr("max",ui.item.descuento);
+            $("#descuento").val(ui.item.descuento);
             $("#des").val(ui.item.des);
             $("#iva_producto").val(ui.item.iva_producto);
             $("#cod_producto").val(ui.item.cod_producto);
@@ -946,7 +944,7 @@ function inicio() {
             $("#producto").val(ui.item.value);
             $("#codigo").val(ui.item.codigo);
             $("#p_venta").val(ui.item.p_venta);
-            $("#descuento").attr("max",ui.item.descuento);
+            $("#descuento").val(ui.item.descuento);
             $("#des").val(ui.item.des);
             $("#iva_producto").val(ui.item.iva_producto);
             $("#cod_producto").val(ui.item.cod_producto);
@@ -969,7 +967,7 @@ function inicio() {
                 $("#producto").val(ui.item.value);
                 $("#codigo").val(ui.item.codigo);
                 $("#p_venta").val(ui.item.p_venta);
-                $("#descuento").attr("max",ui.item.descuento);
+                $("#descuento").val(ui.item.descuento);
                 $("#des").val(ui.item.des);
                 $("#iva_producto").val(ui.item.iva_producto);
                 $("#cod_producto").val(ui.item.cod_producto);
@@ -981,7 +979,7 @@ function inicio() {
                 $("#producto").val(ui.item.value);
                 $("#codigo").val(ui.item.codigo);
                 $("#p_venta").val(ui.item.p_venta);
-                $("#descuento").attr("max",ui.item.descuento);
+                $("#descuento").val(ui.item.descuento);
                 $("#des").val(ui.item.des);
                 $("#iva_producto").val(ui.item.iva_producto);
                 $("#cod_producto").val(ui.item.cod_producto);
@@ -1234,7 +1232,7 @@ function inicio() {
                     $("#iva").val(iva);
                     $("#desc").val(descu);
                     $("#tot").val(t_fc);
-               }else{
+               } else {
                     fil = jQuery("#list").jqGrid("getRowData");
                     subtotal = 0;
                     t_fc = 0;
@@ -1285,7 +1283,7 @@ function inicio() {
                     $("#iva").val(iva);
                     $("#desc").val(descu);
                     $("#tot").val(t_fc);
-               }else{
+               } else {
                     fil = jQuery("#list").jqGrid("getRowData");
                     subtotal = 0;
                     t_fc = 0;

@@ -154,21 +154,30 @@ while ($row = pg_fetch_row($consulta3)) {
 
                         <div class="row">
                           <div class="col-md-12">
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                               <div class="form-group">
-                                <label class="col-md-5">Identicación/RUC: <font color="red">*</font></label>
+                                <label class="col-md-5">RUC/CI: <font color="red">*</font></label>
                                 <div class="form-group col-md-7 no-padding">                                
-                                  <input type="text" name="ruc_ci"  id="ruc_ci" placeholder="Buscar....." required class="form-control" value="<?php echo $campo_identificacion_cliente ?>"  />
-                                  <input type="hidden" name="id_cliente"  id="id_cliente" placeholder="Buscar....." required class="form-control" value="<?php echo $campo_id_cliente ?>" />
+                                  <input type="text" name="ruc_ci"  id="ruc_ci" placeholder="Buscar....." required class="form-control" />
+                                  <input type="hidden" name="id_cliente"  id="id_cliente" placeholder="Buscar....." required class="form-control" />
                                 </div> 
                               </div>
                             </div>
 
-                            <div class="col-md-7">
+                            <div class="col-md-4">
                               <div class="form-group">
                                 <label class="col-md-4" >Nombres Completos:</label>
                                 <div class="form-group col-md-8 no-padding">                                
-                                  <input type="text" name="nombre_cliente"  id="nombre_cliente" required class="form-control" value="<?php echo $campo_nombre_cliente ?>"  />
+                                  <input type="text" name="nombre_cliente"  id="nombre_cliente" placeholder="Buscar....." required class="form-control" />
+                                </div> 
+                              </div>
+                            </div>
+
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label class="col-md-4">Director@:</label>
+                                <div class="form-group col-md-8 no-padding">                                
+                                  <input type="text" name="nombre_director"  id="nombre_director" readonly required class="form-control" />
                                 </div> 
                               </div>
                             </div>
@@ -177,7 +186,7 @@ while ($row = pg_fetch_row($consulta3)) {
                               <div class="form-group">
                                 <label class="col-md-4" >Dirección: <font color="red">*</font></label>
                                 <div class="form-group col-md-8 no-padding">                                
-                                  <input type="text" name="direccion_cliente"  id="direccion_cliente" required class="form-control" value="<?php echo $campo_direccion_cliente ?>"  />
+                                  <input type="text" name="direccion_cliente"  id="direccion_cliente" required class="form-control" />
                                 </div> 
                               </div>  
                             </div>
@@ -305,7 +314,7 @@ while ($row = pg_fetch_row($consulta3)) {
                             <div class="col-md-1">
                               <div class="form-group">
                                 <label>DESC.</label>
-                                <input type="number" name="descuento" id="descuento"  min="0" placeholder="%" class="form-control" />
+                                <input type="number" name="descuento" id="descuento"  min="0" placeholder="%" readonly class="form-control" />
                                 <input type="hidden" name="disponibles"  id="disponibles" readonly class="form-control" />
                                 <input type="hidden" name="iva_producto"  id="iva_producto" readonly class="form-control" />
                                 <input type="hidden" name="carga_series"  id="carga_series" readonly class="form-control" />

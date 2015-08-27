@@ -110,7 +110,7 @@ $cont1 = 0;
                                 </div> 
                               </div> 
 
-                              <div class="form-group">
+                              <div class="form-group" style="display: none">
                                 <label class="col-md-4" >Saldo Disponible:</label>
                                 <div class="form-group col-md-8 no-padding">
                                   <div class="input-group">
@@ -131,7 +131,7 @@ $cont1 = 0;
                                 </div> 
                               </div> 
 
-                              <div class="form-group">
+                              <div class="form-group" style="display: none">
                                 <label class="col-md-3" >Tipo de Precio:</label>
                                 <div class="form-group col-md-9 no-padding">                                
                                   <select class="form-control" name="tipo_precio" id="tipo_precio">
@@ -185,7 +185,7 @@ $cont1 = 0;
                             <div class="col-md-1">
                               <div class="form-group">
                                 <label>DESC.</label>
-                                <input type="number" name="descuento"  id="descuento"  min="0" placeholder="%" class="form-control" />
+                                <input type="number" name="descuento"  id="descuento" readonly min="0" placeholder="%" class="form-control" />
                                 <input type="hidden" name="cod_producto"  id="cod_producto" readonly class="form-control" />
                                 <input type="hidden" name="disponibles"  id="disponibles" readonly class="form-control" />
                                 <input type="hidden" name="iva_producto"  id="iva_producto" readonly class="form-control" />

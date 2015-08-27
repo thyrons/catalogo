@@ -12,7 +12,7 @@ $campo3 = $_POST['campo3'];
 $campo4 = $_POST['campo4'];
 $campo5 = $_POST['campo5'];
 
-/////////////////contador factura venta///////////
+/////////////////contador proforma///////////
 $cont1 = 0;
 $consulta = pg_query("select max(id_proforma) from proforma");
 while ($row = pg_fetch_row($consulta)) {
@@ -21,7 +21,8 @@ while ($row = pg_fetch_row($consulta)) {
 $cont1++;
 //
 ////////////guardar proforma////////
-pg_query("insert into proforma values('$cont1','$_POST[id_cliente]','$_SESSION[id]','1','$cont1','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[tipo_precio]','$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[desc]','$_POST[tot]','$_POST[observaciones]','Activo')");
+pg_query("insert into proforma values('$cont1','$_POST[id_cliente]','$_SESSION[id]','1','$_POST[comprobante]','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[tipo_precio]'
+    ,'$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[desc]','$_POST[tot]','$_POST[observaciones]','Activo')");
 ////////////////////////////////////////
 //
 ////////////agregar detalle_proforma////////
