@@ -21,7 +21,7 @@
             $this->Cell(150, 5, "CLIENTE", 0,1, 'R', 0);      
             $this->SetFont('Arial','B',16);                                                    
             $this->Cell(190, 8, $_SESSION['empresa'], 0,1, 'C',0);                                
-            $this->Image('../../images/logo_empresa.jpg',5,8,35,28);
+            $this->Image('../images/logo_empresa.jpg',5,8,35,28);
             $this->SetFont('Amble-Regular','',10);        
             $this->Cell(190, 5, "PROPIETARIO: ".utf8_decode($_SESSION['propietario']),0,1, 'C',0);                                
             $this->Cell(80, 5, "TEL.: ".utf8_decode($_SESSION['telefono']),0,0, 'R',0);                                

@@ -3235,11 +3235,12 @@ function inicio() {
 
     ////////////////////buscador proformas/////////////////////////
         jQuery("#list4").jqGrid({
-        url: 'xmlBuscarProformas.php',
+        url: 'xmlBuscarProforma2.php',
         datatype: 'xml',
-        colNames: ['ID','IDENTFICACIÓN','CLIENTE','MONTO TOTAL','FECHA PROFORMA'],
+        colNames: ['ID','DIRECTOR@','IDENTIFICACIÓN','CLIENTE','MONTO TOTAL','FECHA PROFORMA'],
         colModel: [
             {name: 'id_proforma', index: 'id_factura_venta', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 50},
+            {name: 'nombres', index: 'nombres', editable: true, search: true, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 250},
             {name: 'identificacion', index: 'identificacion', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 80},
             {name: 'nombres_cli', index: 'nombres_cli', editable: true, search: true, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 300},
             {name: 'total_proforma', index: 'total_venta', editable: true, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 80},
@@ -3439,7 +3440,8 @@ function inicio() {
         },
         {
             closeOnEscape: true,        
-            multipleSearch: false, overlay: false
+            multipleSearch: false, overlay: false,
+            sopt: ['cn','bw','bn','in','ni','ew','en'],
         },
         {
         },
